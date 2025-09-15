@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "author": "Hani Firdous",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": -438.44,
+      "left": -161.67,
+      "attrs": { "background": "black" }
+    },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": -197.4, "left": 163.3, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -605.47,
+      "left": -234.63,
+      "attrs": { "pins": "i2c", "background": "blue", "color": "white" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": -400,
+      "left": 100,
+      "attrs": { "mode": "accurate", "volume": "0.5" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "button1",
+      "top": -350,
+      "left": 100,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "rtc1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "rtc1:5V", "uno:5V", "red", [ "h0" ] ],
+    [ "rtc1:SDA", "uno:A4", "green", [ "h0" ] ],
+    [ "rtc1:SCL", "uno:A5", "green", [ "h0" ] ],
+    [ "lcd1:SCL", "rtc1:SCL", "green", [ "h-13.67", "v268.08" ] ],
+    [ "lcd1:SDA", "rtc1:SDA", "green", [ "h-27.68", "v164.45" ] ],
+    [ "lcd1:VCC", "rtc1:5V", "red", [ "h-39.01", "v116.14" ] ],
+    [ "lcd1:GND", "rtc1:GND", "black", [ "h-53.75", "v368.2" ] ],
+    [ "buzzer1:1", "uno:GND.2", "black", [ "v-20", "h50", "*", "v-30" ] ],
+    [ "buzzer1:2", "uno:8", "blue", [ "v-15", "h40", "*", "v-25" ] ]
+  ],
+  "dependencies": {}
+}
